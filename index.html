@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style/style.css">
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style/style.css">
     <script src="js/client.js"></script>
     <script>setup()</script>
     <title>ckqx</title>
     <style>
 
-
     </style>
 </head>
 <body>
+    <h2 style="text-align:center">
+        Welcome to CKQX Demo Page! <br><br>
+    </h2>
     <div id="content">
         <button id="r2" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">2</button>
         <button id="r3" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">3</button>
@@ -29,12 +31,12 @@
         <button id="rlock" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">lock</button>
         <div></div>
         <div></div>
-        <div id="d1" class="dice">1</div>
-        <div id="d2" class="dice">2</div>
-        <div id="d3" class="dice">3</div>
-        <div id="d4" class="dice">4</div>
-        <div id="d5" class="dice">5</div>
-        <div id="d6" class="dice">6</div>
+        <div id="d1" class="dice w3-round-xlarge">1</div>
+        <div id="d2" class="dice w3-round-xlarge">2</div>
+        <div id="d3" class="dice w3-round-xlarge">3</div>
+        <div id="d4" class="dice w3-round-xlarge">4</div>
+        <div id="d5" class="dice w3-round-xlarge">5</div>
+        <div id="d6" class="dice w3-round-xlarge">6</div>
         <button onclick="rollDice()">Roll Dice</button>
         <h2 id="status" style="clear:left;"></h2>
         <button id="button1" onclick="resetAll()">Reset All</button>
