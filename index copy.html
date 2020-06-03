@@ -7,14 +7,10 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <script src="js/client.js"></script>
     <script>setup()</script>
-    <title>ckqx</title>
-    <style>
-
-
-    </style>
+    <title>Document</title>
 </head>
 <body>
-    <div id="content">
+    <div class="red-grid-container">
         <button id="r2" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">2</button>
         <button id="r3" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">3</button>
         <button id="r4" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">4</button>
@@ -27,18 +23,37 @@
         <button id="r11" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">11</button>
         <button id="r12" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">12</button>
         <button id="rlock" onclick="disableLeft(this)" class="w3-button w3-pale-red w3-ripple w3-border-black w3-border grid-item">lock</button>
-        <div></div>
-        <div></div>
-        <div id="d1" class="dice">1</div>
-        <div id="d2" class="dice">2</div>
-        <div id="d3" class="dice">3</div>
-        <div id="d4" class="dice">4</div>
-        <div id="d5" class="dice">5</div>
-        <div id="d6" class="dice">6</div>
-        <button onclick="rollDice()">Roll Dice</button>
-        <h2 id="status" style="clear:left;"></h2>
-        <button id="button1" onclick="resetAll()">Reset All</button>
     </div>
 
+    <div class="dice-grid-container">
+        <div id="die1White" class="dice">0</div>
+        <div id="die2White" class="dice">1</div>
+        <div id="dieRed" class="dice">2</div>
+        <div id="dieBlue" class="dice">3</div>
+        <div id="dieGreen" class="dice">4</div>
+        <div id="dieYellow" class="dice">5</div>
+        <button onclick="rollDice()">Roll Dice</button>
+    </div>
+        <h2 id="status" style="clear:left;"></h2>
+        <button id="button1" onclick="resetAll()">Reset All</button>
+   
+
 </body>
+
+<script>  
+    function randomFunc(myArr) {    
+       var l = myArr.length, temp, index;  
+       while (l > 0) {  
+          index = Math.floor(Math.random() * l);  
+          l--;  
+          temp = myArr[l];          
+          myArr[l] = myArr[index];          
+          myArr[index] = temp;      
+       }    
+       return myArr;    
+    }        
+    var arr = [10, 20, 30, 40, 50];    
+    document.write(randomFunc(arr));  
+  </script> 
+
 </html>

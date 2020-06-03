@@ -1,52 +1,68 @@
-function clickfunc() {
-    document.getElementById("r2").disabled=true;
+function setup() {
+    window.redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
+    window.yellowList = ["y2","y3","y4","y5","y6","y7","y8","y9","y10","y11","y12","ylock"];
+    window.greenList = ["g12","g11","g10","g9","g8","g7","g6","g5","g4","g3","g2","glock"];
+    window.blueList = ["b12","b11","b10","b9","b8","b7","b6","b5","b4","b3","b2","block"];
+    window.diceList = ["d1","d2","d3","d4","d5","d6"];
+    window.diceColors = ["w","w","r","g","b","y"];
 }
 
 function rollDice() {
-    enableAll();
     clearChoice();
-    var die1 = document.getElementById("die1");
-    var die1 = document.getElementById("die1");
-    var status = document.getElementById("status");
-    var d1 = Math.floor(Math.random() *6) + 1 ; 
-    var d2 = Math.floor(Math.random() *6) + 1 ; 
+    let diceLister = randDice(6);
+    let [d1,d2,d3,d4,d5,d6] = diceLister;
+    displayDice(diceLister);
+
     var diceTotal = d1 + d2;
-    die1.innerHTML = d1;
-    die2.innerHTML = d2;
-    status.innerHTML = "You Rolled: " + diceTotal + "!";
-    highlightRight(diceTotal);
+    document.getElementById("status").innerHTML = "You Rolled: " + diceTotal + "!";
+    highlightChoice(diceTotal);
+}
+
+function displayDice(diceLister){
+    for(var i = 0; i < diceLister.length; i++){
+        document.getElementById("d" + (i+1)).innerHTML = diceLister[i];
+    } 
+}
+
+function randDice (numDice) {
+    let dList = [];
+    for(var i = 0; i < numDice; i++){
+        dList[i] = Math.floor(Math.random() * 6) + 1;
+    }
+    return dList;
+
 }
 
 function disableLeft(me) {
-    var redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
-    redList = redList.reverse();
-    i = redList.indexOf(me.id);
-    document.getElementById(redList[i]).style.borderRadius = "50%";
-    document.getElementById(redList[i]).style.textDecoration = "line-through";
-    for(i; i<redList.length; i++){
-        document.getElementById(redList[i]).disabled = true;
+    // var redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
+    let revRedList = JSON.parse(JSON.stringify(redList));
+    revRedList.reverse();
+    let i = revRedList.indexOf(me.id);
+    document.getElementById(revRedList[i]).style.borderRadius = "50%";
+    document.getElementById(revRedList[i]).style.textDecoration = "line-through";
+    for(i; i<revRedList.length; i++){
+        document.getElementById(revRedList[i]).disabled = true;
     }
 }
 
-function enableAll() {
-    var redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
+function resetAll() {
+    // var redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
     for(var i = 0; i<redList.length; i++){
         document.getElementById(redList[i]).disabled = false;
         document.getElementById(redList[i]).style.borderRadius = "0";
         document.getElementById(redList[i]).style.textDecoration = "none";
     }
+    clearChoice();
 }
 
-function highlightRight (diceTotal) {
-    var redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
+function highlightChoice (diceTotal) {
+    // var redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
     var i = diceTotal - 2;
-    for(i; i<redList.length; i++){
-        document.getElementById(redList[i]).style.fontWeight = "bolder";
-    }
+    document.getElementById(redList[i]).style.fontWeight = "bolder";
 }
 
 function clearChoice() {
-    var redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
+    // var redList = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
     for(var i = 0; i<redList.length; i++){
         document.getElementById(redList[i]).style.fontWeight = "normal";
 }
