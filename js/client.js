@@ -11,7 +11,9 @@ function setup() {
     window.gd0 = 0;
     window.wd1 = 0;
     window.wd2 = 0;
+
 }
+
 
 function randomizeList(myArr) {    
     let l = myArr.length, temp, index;  
@@ -25,7 +27,7 @@ function randomizeList(myArr) {
  }
 
 function rollDice() {
-    clearChoice();
+
     let diceLister = randDice(6);
     let [d1,d2,d3,d4,d5,d6] = diceLister;
     randomizeList(window.diceColors);
@@ -86,10 +88,9 @@ function randDice (numDice) {
         dList[i] = Math.floor(Math.random() * 6) + 1;
     }
     return dList;
-
 }
 
-function disableLeft(me) {
+function selectBox(me) {
     let revRedList = JSON.parse(JSON.stringify(redList));
     revRedList.reverse();
     let i = revRedList.indexOf(me.id);
@@ -102,7 +103,7 @@ function disableLeft(me) {
 
 function resetAll() {
     for(var i = 0; i<redList.length; i++){
-        document.getElementById(redList[i]).disabled = false;
+        document.getElementById(redList[i]).disabled = true;
         document.getElementById(redList[i]).style.borderRadius = "0";
         document.getElementById(redList[i]).style.textDecoration = "none";
         document.getElementById(redList[i]).style.fontWeight = "normal"
