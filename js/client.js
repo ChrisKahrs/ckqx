@@ -32,7 +32,7 @@ function rollDice() {
     let [d1,d2,d3,d4,d5,d6] = diceLister;
     randomizeList(window.diceColors);
     displayDice(diceLister);
-
+    // lightUpOptions();  TODO
     var diceTotal = d1 + d2;
     var status = buildStatus(diceLister);
     highlightChoice(diceTotal);
