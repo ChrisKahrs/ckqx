@@ -1,5 +1,9 @@
-function asdf() {
-    window.game.rollDice();
+const { AsyncSeriesWaterfallHook } = require("tapable");
+const { isMainThread } = require("worker_threads");
+
+function setup() {
+    window.p1 = new Player();
+    window.game = new Game();
 }
 
 function randomizeList(myList) {    
@@ -13,15 +17,18 @@ function randomizeList(myList) {
     }    
 }
 
-function setup() {
-    window.p1 = new Player();
-    window.game = new Game();
-}
-
 function selectBox(me) {
-    document.getElementById(me.id).style.borderRadius = "50%";
-    document.getElementById(me.id).style.textDecoration = "line-through";
-    document.getElementById(me.id).disabled = true;
+    // verify they can?
+    if(p1.isValidChoice(me)) {
+        let i = p1.redOptions.indexOf(me.id);
+        p1.redOptions.splice(0,i);
+        p1.redSelected.push(me.id);
+        document.getElementById(me.id).style.borderRadius = "50%";
+        document.getElementById(me.id).style.textDecoration = "line-through";
+        document.getElementById(me.id).disabled = true;
+    } else {
+        alert("Invalid choice, please try another!")
+    }
 }
 
 class Player {
@@ -39,6 +46,17 @@ class Player {
 
     getRS(){
         return this.redListSelected.length;
+    }
+
+    isValidChoice(me){
+        let isit = false;
+        if(this.redOptions.includes(me.id)){
+            let boxnum = me.id.substring(1);
+            if(((window.game.rd + window.game.wd1) == boxnum)|| ((window.game.rd + window.game.wd2 == boxnum)){
+                isit = true;
+            }
+        }
+        return isit;
     }
 }
 
