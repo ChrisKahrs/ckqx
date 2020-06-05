@@ -9,6 +9,7 @@
     grid-gap: 2px;
     max-width: 960px;
     margin: 0 auto;
+    min-height: 50px;
 }
 
 .dice{
@@ -35,8 +36,8 @@ button{
 }
 
 #status{
-    grid-column: 1 / 5;
-    grid-row: 12;
+    grid-column: 3 / 10;
+    grid-row: 10;
 }
 
 .score{
@@ -70,4 +71,22 @@ button{
     grid-column: 2 / 4;
     color: grey;
     text-align: center;
+}
+
+.blueLock{
+    background-image: url(../assets/blue_lock.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: blue;
+    background-size: cover;
+
+}
+
+.redLock{
+    background-image: url(../assets/red_lock.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: red;
+    /* background-size: cover; */
+
 }

@@ -1,9 +1,18 @@
-const { AsyncSeriesWaterfallHook } = require("tapable");
-const { isMainThread } = require("worker_threads");
+
+// todo single player
+// * undisable last two columns logic
+// * game endings
+// * final score in status
+// * webpack
+// * npm server starts?
+// * not current player (double white logic)
+
 
 function setup() {
     window.p1 = new Player();
     window.game = new Game();
+    window.game.activePlayer = p1;
+    window.scoreTable = [0,1,3,6,10,15,21,28,36,45,55,55,78];
 }
 
 function randomizeList(myList) {    
@@ -18,16 +27,59 @@ function randomizeList(myList) {
 }
 
 function selectBox(me) {
-    // verify they can?
-    if(p1.isValidChoice(me)) {
-        let i = p1.redOptions.indexOf(me.id);
-        p1.redOptions.splice(0,i);
-        p1.redSelected.push(me.id);
+    let selectOk = false;
+    if (p1.openSelection) {
+        switch(me.id.substring(0,1)){
+            case "r": {
+                if(p1.isValidChoiceAll(me, p1.redOptions, p1.redSelected, window.game.rd)) {
+                    selectOk = true;
+                }
+                break;
+            }
+            case "b": {
+                if(p1.isValidChoiceAll(me, p1.blueOptions, p1.blueSelected, window.game.bd)) {
+                    selectOk = true;
+                }
+                break;
+            }
+            case "y": {
+                if(p1.isValidChoiceAll(me, p1.yellowOptions, p1.yellowSelected, window.game.yd)) {
+                    selectOk = true;
+                }
+                break;
+            }
+            case "g": {
+                if(p1.isValidChoiceAll(me, p1.greenOptions, p1.greenSelected, window.game.gd)) {
+                    selectOk = true;
+                }
+                break;
+            }
+            case "w": {
+                p1.negScore -= 5;
+                selectOk = true;
+                break;
+            }
+        }
+    }
+    if(selectOk){
         document.getElementById(me.id).style.borderRadius = "50%";
         document.getElementById(me.id).style.textDecoration = "line-through";
         document.getElementById(me.id).disabled = true;
+        let r = window.scoreTable[p1.redSelected.length];   
+        let y = window.scoreTable[p1.yellowSelected.length];
+        let g = window.scoreTable[p1.greenSelected.length]; 
+        let b = window.scoreTable[p1.blueSelected.length];  
+        window.scoreTable[p1.blueSelected.length];  
+        document.getElementById("rs").innerHTML = r; 
+        document.getElementById("ys").innerHTML = y;  
+        document.getElementById("gs").innerHTML = g;   
+        document.getElementById("bs").innerHTML = b; 
+        document.getElementById("total").innerHTML = "Total: " + (r + y + g + b + p1.negScore);     
+        document.getElementById("dice").disabled = false;
+        p1.openSelection = false;
+        document.getElementById("status").innerHTML = "Roll Away!";
     } else {
-        alert("Invalid choice, please try another!")
+        document.getElementById("status").innerHTML = "Sorry, please pick another cell, that one isn't legal!";
     }
 }
 
@@ -42,18 +94,22 @@ class Player {
         this.yellowSelected = [];
         this.greenSelected = [];
         this.blueSelected = [];
+        this.negScore = 0;
+        this.openSelection = false;
     }
 
-    getRS(){
-        return this.redListSelected.length;
-    }
-
-    isValidChoice(me){
+    isValidChoiceAll(me, colorOption, spotSelected, colorDie){
         let isit = false;
-        if(this.redOptions.includes(me.id)){
+        if(colorOption.includes(me.id)){
             let boxnum = me.id.substring(1);
-            if(((window.game.rd + window.game.wd1) == boxnum)|| ((window.game.rd + window.game.wd2 == boxnum)){
+            if(((colorDie.num + window.game.wd1.num) == boxnum)|| ((colorDie.num + window.game.wd2.num == boxnum))){
                 isit = true;
+                let i = colorOption.indexOf(me.id);
+                for(let j = 0; j < i; j++){
+                    document.getElementById(colorOption[j]).disabled = true;
+                }
+                colorOption.splice(0,i);
+                spotSelected.push(me.id);
             }
         }
         return isit;
@@ -73,16 +129,20 @@ class Game{
         this.diceColors = ["white","white","red","green","blue","yellow"];
         this.diceValues = [];
 
+        this.activePlayer = null;
         this.playerOrder = [];
         this.lastTurn = false;
+        this.roundCounter = 0;
     }
 
     verifyState() {
         return true;
     }
 
-   
     rollDice() {
+        this.roundCounter += 1;
+        // reset status so it is clear
+        document.getElementById("status").innerHTML = "Good Luck! Round: " + this.roundCounter;
         // randomize dice values
         for(var i = 0; i < 6; i++){
             this.diceValues[i] = Math.floor(Math.random() * 6) + 1;
@@ -92,7 +152,7 @@ class Game{
         // randomize  dice order
         randomizeList(this.diceOrder);
         // put in dice boxes
-        this.wd1 = 0; // to ensure we know which white hit first
+        this.wd1.num = 0; // to ensure we know which white hit first
         for(var k = 0; k < 6;k++){
             switch(this.diceColors[k]) {
                         case "white":
@@ -126,6 +186,8 @@ class Game{
             document.getElementById("d" + (i+1)).innerHTML = this.diceValues[i];
             document.getElementById("d" + (i+1)).style.backgroundColor = this.diceColors[i];
         }
+        document.getElementById("dice").disabled = true;
+        p1.openSelection = true;
     }
 }
 
@@ -136,3 +198,4 @@ class Die {
         this.pos = 0;
     }
 }
+
