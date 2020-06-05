@@ -6,9 +6,6 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="style/style.css">
     <script src="js/client.js"></script>
-    <!-- <script src="js/game.js"></script>
-    <script src="js/player.js"></script>
-    <script src="js/die.js"></script> -->
     <script>setup()</script>
     <title>ckqx</title>
     <style>
@@ -82,7 +79,7 @@
         <button id="b5" onclick="selectBox(this)" class="w3-button w3-blue w3-ripple w3-border-black w3-border">5</button>
         <button id="b4" onclick="selectBox(this)" class="w3-button w3-blue w3-ripple w3-border-black w3-border">4</button>
         <button id="b3" onclick="selectBox(this)" class="w3-button w3-blue w3-ripple w3-border-black w3-border">3</button>
-        <button id="b2" onclick="selectBox(this)" class="w3-button w3-blue w3-ripple w3-border-black w3-border w3-leftbar w3-bottombar">2</button>
+        <button id="b2" onclick="selectBox(this)" class="w3-button w3-blue w3-ripple w3-border-black w3-border w3-leftbar w3-bottombar" disabled>2</button>
         <button id="block" onclick="selectBox(this)" class="w3-button w3-blue w3-ripple w3-border-black w3-border w3-rightbar w3-bottombar">lock</button>
         
         <div id="l1" class="legend w3-round-xlarge">1x=1</div>
@@ -131,7 +128,7 @@
         <div id="d4" class="dice w3-round-xlarge">4</div>
         <div id="d5" class="dice w3-round-xlarge">5</div>
         <div id="d6" class="dice w3-round-xlarge">6</div>
-        <button onclick="asdf()">Roll Dice</button>
+        <button onclick="rollDice()">Roll Dice</button>
         <h2 id="status" style="clear:left;"></h2>
         <div></div>
         <div></div>

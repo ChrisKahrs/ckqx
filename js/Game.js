@@ -1,47 +1,3 @@
-function asdf() {
-    window.game.rollDice();
-}
-
-function randomizeList(myList) {    
-    let l = myList.length, temp, index;  
-    while (l > 0) {  
-       index = Math.floor(Math.random() * l);  
-       l--;  
-       temp = myList[l];          
-       myList[l] = myList[index];          
-       myList[index] = temp;      
-    }    
-}
-
-function setup() {
-    window.p1 = new Player();
-    window.game = new Game();
-}
-
-function selectBox(me) {
-    document.getElementById(me.id).style.borderRadius = "50%";
-    document.getElementById(me.id).style.textDecoration = "line-through";
-    document.getElementById(me.id).disabled = true;
-}
-
-class Player {
-    constructor() {
-        this.redOptions = ["r2","r3","r4","r5","r6","r7","r8","r9","r10","r11","r12","rlock"];
-        this.yellowOptions = ["y2","y3","y4","y5","y6","y7","y8","y9","y10","y11","y12","ylock"];
-        this.greenOptions = ["g12","g11","g10","g9","g8","g7","g6","g5","g4","g3","g2","glock"];
-        this.blueOptions = ["b12","b11","b10","b9","b8","b7","b6","b5","b4","b3","b2","block"];
-
-        this.redSelected = [];
-        this.yellowSelected = [];
-        this.greenSelected = [];
-        this.blueSelected = [];
-    }
-
-    getRS(){
-        return this.redListSelected.length;
-    }
-}
-
 class Game{
     constructor(){
         this.rd = new Die("red");
@@ -63,7 +19,17 @@ class Game{
         return true;
     }
 
-   
+    randomizeList(myList) {    
+        let l = myList.length, temp, index;  
+        while (l > 0) {  
+           index = Math.floor(Math.random() * l);  
+           l--;  
+           temp = myList[l];          
+           myList[l] = myList[index];          
+           myList[index] = temp;      
+        }    
+     }
+    
     rollDice() {
         // randomize dice values
         for(var i = 0; i < 6; i++){
@@ -72,11 +38,11 @@ class Game{
         // randomize dice colors 
         randomizeList(this.diceColors);
         // randomize  dice order
-        randomizeList(this.diceOrder);
+        ramdomizeList(this.diceOrder);
         // put in dice boxes
-        this.wd1 = 0; // to ensure we know which white hit first
+        wd1 = 0; // to ensure we know which white hit first
         for(var k = 0; k < 6;k++){
-            switch(this.diceColors[k]) {
+            switch(diceColors[k]) {
                         case "white":
                             if (this.wd1.num == 0){
                                 this.wd1.num = this.diceValues[k];
@@ -104,17 +70,11 @@ class Game{
                             break;
                     }
                 } 
+            }
+
+        }
         for(var i = 0; i < 6; i++){
             document.getElementById("d" + (i+1)).innerHTML = this.diceValues[i];
             document.getElementById("d" + (i+1)).style.backgroundColor = this.diceColors[i];
-        }
-    }
-}
-
-class Die {
-    constructor(incomingColor){
-        this.color =  incomingColor;
-        this.num = 0;
-        this.pos = 0;
     }
 }
