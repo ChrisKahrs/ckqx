@@ -135,10 +135,6 @@ class Game{
         this.roundCounter = 0;
     }
 
-    verifyState() {
-        return true;
-    }
-
     rollDice() {
         this.roundCounter += 1;
         // reset status so it is clear
