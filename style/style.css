@@ -32,7 +32,18 @@
 
 button{
    font-size: 24px; 
+}
 
+.buttonYes{
+    font-size: 16px;
+    grid-column: 10 / 11;
+    grid-row: 10;
+}
+
+.buttonNo{
+    font-size: 16px;
+    grid-column: 11 / 12;
+    grid-row: 10;
 }
 
 #status{

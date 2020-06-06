@@ -31,7 +31,7 @@ function randomizeList(myList) {
 function selectBox(me) {
     let controller = me.id.substring(0,1);
     let selectOk = false;
-    if (p1.openSelection) {
+    if (p1.openw2Yes|| p1.openSelection) {
         switch(controller){
             case "r": {
                 if(p1.isValidChoiceAll(me, p1.redOptions, p1.redSelected, window.game.rd)) {
@@ -77,10 +77,15 @@ function selectBox(me) {
         document.getElementById("ys").innerHTML = y;  
         document.getElementById("gs").innerHTML = g;   
         document.getElementById("bs").innerHTML = b; 
-        document.getElementById("total").innerHTML = "Total: " + (r + y + g + b + p1.negScore);     
-        document.getElementById("dice").disabled = false;
-        p1.openSelection = false;
-        document.getElementById("status").innerHTML = "Roll Away!";
+        document.getElementById("total").innerHTML = "Total: " + (r + y + g + b + p1.negScore);   
+        if (p1.openw2Yes) {
+            p1.openw2Yes = false;
+            window.game.w2NoClick();
+        } else {
+            document.getElementById("dice").disabled = false;
+            p1.openSelection = false;
+            document.getElementById("status").innerHTML = "Roll Away!";
+        }
     } else {
         document.getElementById("status").innerHTML = "Sorry, please pick another cell, that one isn't legal!";
     }
@@ -99,6 +104,8 @@ class Player {
         this.blueSelected = [];
         this.negScore = 0;
         this.openSelection = false;
+        this.openw2Yes = false;
+        this.madeAChoiceThisRound = false;
     }
 
     isValidChoiceAll(me, colorOption, spotSelected, colorDie){
@@ -147,7 +154,43 @@ class Game{
         this.roundCounter = 0;
     }
 
+    w2YesClick() {
+        p1.openw2Yes = true;
+        document.getElementById("w2Yes").hidden = true;
+        document.getElementById("w2No").hidden = true;
+        this.madeAChoiceThisRound = true;
+    }
+
+    w2NoClick() {
+        document.getElementById("status").innerHTML = "Ok, would you like to a color and a white dice?";
+        document.getElementById("w2Yes").hidden = true;
+        document.getElementById("w2No").hidden = true;
+        document.getElementById("colorYes").hidden = false;
+        document.getElementById("colorNo").hidden = false;
+    }
+    
+    colorYesClick() {
+        p1.openSelection = true;
+        document.getElementById("colorYes").hidden = true;
+        document.getElementById("colorNo").hidden = true;
+        this.madeAChoiceThisRound = true;
+    }
+
+    colorNoClick() {
+        if (!this.madeAChoiceThisRound) {
+            document.getElementById("status").innerHTML = "You MUST choose a color since you didn't choose 2 white dice.  Sorry.";
+            document.getElementById("colorNo").hidden = true;
+        } else {
+            document.getElementById("dice").disabled = false;
+            p1.openSelection = false;
+            document.getElementById("status").innerHTML = "Roll Away!";
+            document.getElementById("colorYes").hidden = true;
+            document.getElementById("colorNo").hidden = true;
+        }
+    }
+
     rollDice() {
+        this.madeAChoiceThisRound = false;
         this.roundCounter += 1;
         // reset status so it is clear
         document.getElementById("status").innerHTML = "Good Luck! Roll# " + this.roundCounter;
@@ -195,7 +238,9 @@ class Game{
             document.getElementById("d" + (i+1)).style.backgroundColor = this.diceColors[i];
         }
         document.getElementById("dice").disabled = true;
-        p1.openSelection = true;
+        document.getElementById("w2Yes").hidden = false;
+        document.getElementById("w2No").hidden = false;
+        document.getElementById("status").innerHTML = "Do you want to use the two white dice?";
     }
 }
 

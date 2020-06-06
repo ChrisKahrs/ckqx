@@ -109,16 +109,22 @@
 
         <div></div>
         <div></div>
-        <div id="d1" class="dice w3-round-xlarge">1</div>
-        <div id="d2" class="dice w3-round-xlarge">2</div>
-        <div id="d3" class="dice w3-round-xlarge">3</div>
-        <div id="d4" class="dice w3-round-xlarge">4</div>
-        <div id="d5" class="dice w3-round-xlarge">5</div>
-        <div id="d6" class="dice w3-round-xlarge">6</div>
-        <button id="dice" onclick="window.game.rollDice()">Roll Dice</button>
+        <button id="d1" class="dice w3-round-xlarge">1</button>
+        <button id="d2" class="dice w3-round-xlarge">2</button>
+        <button id="d3" class="dice w3-round-xlarge">3</button>
+        <button id="d4" class="dice w3-round-xlarge">4</button>
+        <button id="d5" class="dice w3-round-xlarge">5</button>
+        <button id="d6" class="dice w3-round-xlarge">6</button>
+        <button id="dice" onclick="window.game.rollDice()" class="buttonQ">Roll Dice</button>
         <div></div>
         <div></div>
         <div></div>
+
+        <button id="w2Yes" onclick="window.game.w2YesClick()" hidden class="buttonYes">Yes</button>
+        <button id="w2No" onclick="window.game.w2NoClick()" hidden class="buttonNo">No</button>
+        <button id="colorYes" onclick="window.game.colorYesClick()" hidden class="buttonYes">Yes</button>
+        <button id="colorNo" onclick="window.game.colorNoClick()" hidden class="buttonNo">No</button>
+
 
         <div id="status" class="w3-button w3-white w3-ripple w3-border-black w3-border">Status!</div>
         
