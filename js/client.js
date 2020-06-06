@@ -1,3 +1,4 @@
+"use strict";
 
 // todo single player
 // * undisable last two columns logic
@@ -27,9 +28,10 @@ function randomizeList(myList) {
 }
 
 function selectBox(me) {
+    let controller = me.id.substring(0,1);
     let selectOk = false;
     if (p1.openSelection) {
-        switch(me.id.substring(0,1)){
+        switch(controller){
             case "r": {
                 if(p1.isValidChoiceAll(me, p1.redOptions, p1.redSelected, window.game.rd)) {
                     selectOk = true;
@@ -110,6 +112,15 @@ class Player {
                 }
                 colorOption.splice(0,i);
                 spotSelected.push(me.id);
+                if(spotSelected.length >= 2){
+                    let controller = me.id.substring(0,1);
+                    if(controller=="r" || controller=="y"){
+                        document.getElementById(controller + "12").disabled = false;
+                    } else {
+                        document.getElementById(controller + "2").disabled = false;
+                    }
+                    document.getElementById(controller + "lock").disabled = false;
+                }
             }
         }
         return isit;
@@ -138,7 +149,7 @@ class Game{
     rollDice() {
         this.roundCounter += 1;
         // reset status so it is clear
-        document.getElementById("status").innerHTML = "Good Luck! Round: " + this.roundCounter;
+        document.getElementById("status").innerHTML = "Good Luck! Roll# " + this.roundCounter;
         // randomize dice values
         for(var i = 0; i < 6; i++){
             this.diceValues[i] = Math.floor(Math.random() * 6) + 1;
