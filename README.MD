@@ -10,10 +10,11 @@ You can find it at many local retailers (support your local game store please), 
 * Dr. Toy's Best Vacation Products
 * and many more...
 
-## The journey
-Before I get started, let me say "I am married to my spouse, nothing else!"  So if there is a better way to do anything in the code, or framework, or anything, please let me know.  You can fork and do a pull request I will change it, or tell me and I will add it to the punch list.  Thank you!
+## The Journey
+Before I get started, let me say "I am married to my spouse, nothing else!"  So if there is a better way to do anything in the code, or framework, or anything, please let me know.  You can fork and do a pull request and I will pull it, or tell me and I will add it to the punch list.  Thank you!
 
 A couple quotes to keep us motivated on the sometimes hard slog of coding...
+
 **“It is good to have an end to journey toward; but it is the journey that matters, in the end.”
 ― Ursula K. Le Guin, The Left Hand of Darkness**
 
@@ -22,13 +23,14 @@ and
 **“We should not judge people by their peak of excellence; but by the distance they have traveled from the point where they started.”
 ― Henry Ward Beecher**
 
-Why these are so important is because you can start anywhere along the path I lay out below, but it is the dialy/weekly learnings that mark the progress, not nessisarially how fast you get to the outcome desire.
+Why these are so important is because you can start anywhere along the path I lay out below, but it is the daily/weekly learnings that mark the progress, not nessisarially how fast you get to the outcome desire.
 
 On to the coding...
 
 My goal was to find a test harness to learn how to create an online boardgame that uses a solid AI for opponents.  Here are the main steps outlined below:
 
 My steps to learning a few new skills:
+* Understand Git
 * Understand html
 * Understand css and css-grid
 * Understand JavaScript client side
@@ -36,7 +38,7 @@ My steps to learning a few new skills:
     * this is the step I am on currently
 * Understand Node.js server side JavaScript
 * Understand Webservers and Socket.IO
-* Program basic 2 player game using Node.js
+* Program basic 3 player game using Node.js
 * Program basic 5 player game using Node.js
 * Understand SQL
 * Program ability to save game state
@@ -45,6 +47,8 @@ My steps to learning a few new skills:
 * Program probabilistic AI looking at other players moves
 * Program reinforcement AI training
 * Get a snack!
+
+Each will have their own "Readme" file where I will put resoruces to help you along the way as well.
 
 
 Here are the rules: https://gamewright.com/pdfs/Rules/QwixxTM-RULES.pdf 

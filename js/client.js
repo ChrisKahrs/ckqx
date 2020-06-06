@@ -1,9 +1,10 @@
 "use strict";
 
 // todo single player
-// * undisable last two columns logic
+// * two white die play || ((window.game.wd1.num + window.game.wd2.num) == boxnum), then a "use white die option?" if activePlayer = currentPlayer (pointers to same object?)
 // * game endings
 // * final score in status
+// * when one locks take away the dice option
 // * webpack
 // * npm server starts?
 // * not current player (double white logic)
@@ -104,7 +105,7 @@ class Player {
         let isit = false;
         if(colorOption.includes(me.id)){
             let boxnum = me.id.substring(1);
-            if(((colorDie.num + window.game.wd1.num) == boxnum)|| ((colorDie.num + window.game.wd2.num == boxnum))){
+            if( ((colorDie.num + window.game.wd1.num) == boxnum) || ((colorDie.num + window.game.wd2.num) == boxnum) ){
                 isit = true;
                 let i = colorOption.indexOf(me.id);
                 for(let j = 0; j < i; j++){

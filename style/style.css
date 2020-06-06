@@ -74,7 +74,7 @@ button{
 }
 
 .blueLock{
-    background-image: url(../assets/blue_lock.jpg);
+    background-image: url(../assets/blue_lock.png);
     background-repeat: no-repeat;
     background-position: center;
     background-color: blue;
@@ -87,6 +87,21 @@ button{
     background-repeat: no-repeat;
     background-position: center;
     background-color: red;
-    /* background-size: cover; */
+    background-size: cover;
+}
 
+.yellowLock{
+    background-image: url(../assets/yellow_lock.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: yellow;
+    background-size: cover;
+}
+
+.greenLock{
+    background-image: url(../assets/green_lock.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: green;
+    background-size: cover;
 }
