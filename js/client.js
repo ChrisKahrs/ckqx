@@ -112,8 +112,18 @@ class Player {
         let isit = false;
         if(colorOption.includes(me.id)){
             let boxnum = me.id.substring(1);
-            if( ((colorDie.num + window.game.wd1.num) == boxnum) || ((colorDie.num + window.game.wd2.num) == boxnum) ){
+  
+            if( ((colorDie.num + window.game.wd1.num) == boxnum) || ((colorDie.num + window.game.wd2.num) == boxnum) && !p1.openw2Yes){
                 isit = true;
+            }
+
+            if( p1.openw2Yes ){
+                if((window.game.wd2.num + window.game.wd1.num) == boxnum){
+                    isit = true;
+                    p1.openw2Yes = false;
+                }
+            }
+            if(isit){
                 let i = colorOption.indexOf(me.id);
                 for(let j = 0; j < i; j++){
                     document.getElementById(colorOption[j]).disabled = true;
