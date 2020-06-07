@@ -113,14 +113,13 @@ class Player {
         if(colorOption.includes(me.id)){
             let boxnum = me.id.substring(1);
   
-            if( ((colorDie.num + window.game.wd1.num) == boxnum) || ((colorDie.num + window.game.wd2.num) == boxnum) && !p1.openw2Yes){
+            if( (((colorDie.num + window.game.wd1.num) == boxnum) || ((colorDie.num + window.game.wd2.num) == boxnum)) && !p1.openw2Yes){
                 isit = true;
             }
 
             if( p1.openw2Yes ){
                 if((window.game.wd2.num + window.game.wd1.num) == boxnum){
                     isit = true;
-                    p1.openw2Yes = false;
                 }
             }
             if(isit){

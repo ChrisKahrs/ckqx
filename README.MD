@@ -30,12 +30,18 @@ On to the coding...
 My goal was to find a test harness to learn how to create an online boardgame that uses a solid AI for opponents.  Here are the main steps outlined below:
 
 My steps to learning a few new skills:
-* Understand Git
+* Understand git
 * Understand html
 * Understand css and css-grid
+    * why did I not use a framework like Angular, Vue or React?
+    * images for locks and image manipulation
+    * using w3- styles?
 * Understand JavaScript client side
+    * why did I not use JQuery?
+    * why not use a game framework like Phaser?
 * Program basic 1 player game in browser
     * this is the step I am on currently
+* Get this to work in a public website
 * Understand Node.js server side JavaScript
 * Understand Webservers and Socket.IO
 * Program basic 3 player game using Node.js
