@@ -1,4 +1,4 @@
-# CKQwixx On-Line Game Design and AI Tutorial
+﻿# CKQwixx On-Line Game Design and AI Tutorial
 
 First, and absolutely foremost, let me say THANK YOU to Gamewright for allowing me to use their fabulous game for this project.  I can't encourage you enough to pick up a copy (or 10 to hand out to friends, seriously I do this all the time!).  All ages are challenged, rules fit on one side of one page, everyone stays engaged and you can complete a game in 15-20 min!  
 
@@ -49,6 +49,16 @@ My steps to learning a few new skills:
 * Get a snack!
 
 Each will have their own "Readme" file where I will put resoruces to help you along the way as well.
+
+Adasdf  adsfdssdaf 
+# Testing large fonts 
+
+What are wewwee doing today?
+• What is this
+
+• Asdfasd
+
+* sdfsd
 
 
 Here are the rules: https://gamewright.com/pdfs/Rules/QwixxTM-RULES.pdf 
