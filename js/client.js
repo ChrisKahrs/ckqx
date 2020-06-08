@@ -1,7 +1,6 @@
 "use strict";
 
 // todo single player
-// * two white die play || ((window.game.wd1.num + window.game.wd2.num) == boxnum), then a "use white die option?" if activePlayer = currentPlayer (pointers to same object?)
 // * game endings
 // * final score in status
 // * when one locks take away the dice option
@@ -87,7 +86,8 @@ function selectBox(me) {
             document.getElementById("status").innerHTML = "Roll Away!";
         }
     } else {
-        document.getElementById("status").innerHTML = "Sorry, please pick another cell, that one isn't legal!";
+        // document.getElementById("status2").innerHTML = "Sorry, please pick another cell, that one isn't legal!";
+        alert("Invalid Selection!");
     }
 }
 
@@ -129,9 +129,11 @@ class Player {
                 }
                 colorOption.splice(0,i);
                 spotSelected.push(me.id);
-                if(spotSelected.length >= 2){
+                if(spotSelected.length >= 5){
                     let controller = me.id.substring(0,1);
                     if(controller=="r" || controller=="y"){
+                            // maybe then push it onto the option stack?
+                            // then find out when clicked close it off and take the dice away.
                         document.getElementById(controller + "12").disabled = false;
                     } else {
                         document.getElementById(controller + "2").disabled = false;

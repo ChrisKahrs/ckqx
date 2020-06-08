@@ -50,14 +50,15 @@ My steps to learning a few new skills:
 * Program ability to save game state
 * Program ability to alert next player of their turn
 * Program deterministic (rules based) AI opponents
+    * Reddit has some great analysis on "Solving Single Player Qwixx" and "Qwixx Analysis and Strategy"
 * Program probabilistic AI looking at other players moves
 * Program reinforcement AI training
 * Get a snack!
 
 Each will have their own "Readme" file where I will put resoruces to help you along the way as well.
 
-Adasdf  adsfdssdaf 
-# Testing large fonts 
+
+# Maybe I should do a weekly dev journel? 
 
 What are wewwee doing today?
 • What is this
